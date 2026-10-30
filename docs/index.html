@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robert Suwalski</title>
+<meta name="description" content="Robert Suwalski — Glastuinbouw en bouw in Delft. KvK 76834123.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Outfit:wght@400;500;600&display=swap">
+<style>
+:root { --paper:#f3efe6; --ink:#1a241c; --muted:#5d675f; --leaf:#1e5c34; --deep:#143f24; --card:#fffcf7; --line:#e2d9c8; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Outfit,system-ui,sans-serif; }
+header { background:var(--deep); color:var(--card); }
+.bar, main, footer { width:min(64rem,100%); margin:0 auto; }
+.bar { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; }
+.brand { font-family:Fraunces,Georgia,serif; font-size:1.15rem; }
+.langs { display:flex; gap:.25rem; background:var(--leaf); border-radius:999px; padding:.25rem; }
+.langs button { min-width:2.75rem; min-height:2.75rem; border:0; border-radius:999px; background:transparent; color:var(--card); font:inherit; font-weight:600; cursor:pointer; }
+.langs button[aria-pressed="true"] { background:var(--card); color:var(--deep); }
+main { padding:0 1.25rem 4rem; }
+.hero { text-align:center; padding:3rem 0; }
+.logo { width:7rem; height:7rem; border-radius:999px; object-fit:contain; background:var(--card); padding:.4rem; border:1px solid var(--line); }
+.kicker { letter-spacing:.14em; text-transform:uppercase; color:var(--leaf); font-size:.8rem; font-weight:600; }
+h1,h2 { font-family:Fraunces,Georgia,serif; font-weight:560; }
+h1 { font-size:clamp(2rem,5vw,3rem); margin:.4rem 0 0; }
+.region { color:var(--leaf); font-weight:600; margin:.25rem 0 0; }
+.intro { color:var(--muted); max-width:36rem; margin:.75rem auto 0; font-size:1.1rem; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:1.25rem; padding:1.25rem; }
+.contact { display:grid; gap:.6rem; }
+.contact a, .contact p { color:inherit; text-decoration:none; margin:0; }
+.meta { color:var(--muted); font-size:.9rem; }
+.grid { display:grid; gap:1.25rem; margin-top:2rem; }
+@media (min-width:800px) { .grid { grid-template-columns:1fr 1fr; } .contact { grid-template-columns:1fr 1fr; } }
+.shot { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:1.25rem 1.25rem 0 0; display:block; }
+article { background:var(--card); border:1px solid var(--line); border-radius:1.25rem; overflow:hidden; }
+article div { padding:1.25rem; }
+article p { color:var(--muted); line-height:1.55; }
+.certs { margin-top:2rem; background:var(--leaf); color:var(--card); border-radius:1.25rem; padding:1.25rem 1.5rem; }
+.certs ul { margin:.5rem 0 0; padding:0; list-style:none; }
+.certs li { min-height:2.75rem; display:flex; align-items:center; }
+.map { margin-top:2rem; background:var(--card); border:1px solid var(--line); border-radius:1.25rem; overflow:hidden; }
+.map .top { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.75rem; padding:1.25rem; }
+.map a { background:var(--leaf); color:var(--card); border-radius:999px; min-height:2.75rem; display:inline-flex; align-items:center; padding:0 1rem; text-decoration:none; font-weight:600; }
+iframe { width:100%; height:20rem; border:0; }
+footer { border-top:1px solid var(--line); text-align:center; color:var(--muted); padding:1.5rem; }
+footer a { color:var(--leaf); }
+</style>
+</head>
+<body>
+<header><div class="bar"><p class="brand">Robert Suwalski</p>
+<div class="langs" id="langs"></div></div></header>
+<main>
+<section class="hero">
+<img class="logo" id="logo" alt="Robert Suwalski" src="images/logo.jpg">
+<p class="kicker" id="kicker"></p>
+<h1>Robert Suwalski</h1>
+<p class="region">Zuid-Holland</p>
+<p class="intro" id="intro"></p>
+</section>
+<section class="card contact" id="contact"></section>
+<section class="grid" id="sectors"></section>
+<section class="certs" id="certs"></section>
+<section class="map">
+<div class="top"><div><h2 id="mapTitle"></h2><p class="meta">Lodewijk van Deysselhof 38, 2624 WE Delft</p></div>
+<a id="mapLink" href="https://www.google.com/maps/search/?api=1&query=Lodewijk+van+Deysselhof+38,+2624+WE+Delft" target="_blank" rel="noreferrer"></a></div>
+<iframe title="Delft" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Lodewijk%20van%20Deysselhof%2038%2C%202624%20WE%20Delft&z=16&output=embed"></iframe>
+</section>
+</main>
+<footer>
+<p>Robert Suwalski · KvK 76834123 · BTW NL005236943B80 · Delft</p>
+<p><a id="privacy" href="privacy.html"></a></p>
+</footer>
+<script>
+const copy = {"pl": {"kicker": "Glastuinbouw · Bouw · Delft", "intro": "Praca w szklarniach i na budowach w Holandii.", "contact": "Kontakt", "address": "Adres", "greenTitle": "Glastuinbouw", "greenText": "Specjalizacja w obsłudze nowoczesnych szklarni dla sektora agrarische. Profesjonalne rozwiązania horticulturalne.", "bouwTitle": "Bouw — magazyny", "bouwText": "Działamy na budowach i magazynach. Posiadamy dyplom VCA oraz dyplom kursu spawalniczego.", "certTitle": "Certyfikaty", "certs": ["Dyplom VCA", "Dyplom kursu spawalniczego"], "mapTitle": "Lokalizacja", "mapLink": "Otwórz w Google Maps", "privacy": "Polityka prywatności"}, "nl": {"kicker": "Glastuinbouw · Bouw · Delft", "intro": "Werk in kassen en op bouwplaatsen in Nederland.", "contact": "Contact", "address": "Adres", "greenTitle": "Glastuinbouw", "greenText": "Specialisatie in het onderhoud van moderne kassen voor de agrarische sector. Professionele horticulturele oplossingen.", "bouwTitle": "Bouw — magazijnen", "bouwText": "Wij werken op bouwplaatsen en in magazijnen. Wij beschikken over een VCA-diploma en een lasdiploma.", "certTitle": "Certificaten", "certs": ["VCA-diploma", "Lasdiploma"], "mapTitle": "Locatie", "mapLink": "Open in Google Maps", "privacy": "Privacybeleid"}, "en": {"kicker": "Greenhouse horticulture · Construction · Delft", "intro": "Greenhouse and construction work in the Netherlands.", "contact": "Contact", "address": "Address", "greenTitle": "Greenhouse horticulture", "greenText": "Specialized in the maintenance of modern greenhouses for the agricultural sector. Professional horticultural solutions.", "bouwTitle": "Construction — warehouses", "bouwText": "We work on construction sites and in warehouses. We hold a VCA diploma and a welding course diploma.", "certTitle": "Certificates", "certs": ["VCA diploma", "Welding course diploma"], "mapTitle": "Location", "mapLink": "Open in Google Maps", "privacy": "Privacy policy"}};
+let lang = localStorage.getItem("lang") || "pl";
+function render() {
+  const t = copy[lang];
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  document.getElementById("langs").innerHTML = ["pl","nl","en"].map(c =>
+    `<button type="button" data-l="${c}" aria-pressed="${c===lang}">${c.toUpperCase()}</button>`).join("");
+  document.querySelectorAll("#langs button").forEach(b => b.onclick = () => { lang = b.dataset.l; render(); });
+  document.getElementById("logo").src = "images/logo.jpg";
+  document.getElementById("kicker").textContent = t.kicker;
+  document.getElementById("intro").textContent = t.intro;
+  document.getElementById("contact").innerHTML = `<h2 style="grid-column:1/-1">${t.contact}</h2>
+    <a href="tel:0684600950">0684600950</a>
+    <a href="mailto:robert.suwalski@outlook.com">robert.suwalski@outlook.com</a>
+    <p style="grid-column:1/-1"><span class="meta">${t.address}</span><br>Lodewijk van Deysselhof 38, 2624 WE Delft</p>
+    <p class="meta" style="grid-column:1/-1">KvK 76834123 · BTW NL005236943B80</p>`;
+  document.getElementById("sectors").innerHTML = `
+    <article><img class="shot" alt="${t.greenTitle}" src="images/greenhouse.jpg"><div><h2>${t.greenTitle}</h2><p>${t.greenText}</p></div></article>
+    <article><img class="shot" alt="${t.bouwTitle}" src="images/warehouse.jpg"><div><h2>${t.bouwTitle}</h2><p>${t.bouwText}</p></div></article>`;
+  document.getElementById("certs").innerHTML = `<h2>${t.certTitle}</h2><ul>${t.certs.map(c=>`<li>✓ ${c}</li>`).join("")}</ul>`;
+  document.getElementById("mapTitle").textContent = t.mapTitle;
+  document.getElementById("mapLink").textContent = t.mapLink;
+  const p = document.getElementById("privacy");
+  p.textContent = t.privacy;
+  p.href = "privacy.html?lang=" + lang;
+}
+render();
+</script>
+
+</body>
+</html>
