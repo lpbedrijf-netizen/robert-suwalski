@@ -52,7 +52,7 @@ footer a { color:var(--leaf); }
 <div class="langs" id="langs"></div></div></header>
 <main>
 <section class="hero">
-<img class="logo" id="logo" alt="Robert Suwalski" src="">
+<img class="logo" id="logo" alt="Robert Suwalski" src="images/logo.jpg">
 <p class="kicker" id="kicker"></p>
 <h1>Robert Suwalski</h1>
 <p class="region">Zuid-Holland</p>
@@ -73,26 +73,15 @@ footer a { color:var(--leaf); }
 </footer>
 <script>
 const copy = {"pl": {"kicker": "Glastuinbouw · Bouw · Delft", "intro": "Praca w szklarniach i na budowach w Holandii.", "contact": "Kontakt", "address": "Adres", "greenTitle": "Glastuinbouw", "greenText": "Specjalizacja w obsłudze nowoczesnych szklarni dla sektora agrarische. Profesjonalne rozwiązania horticulturalne.", "bouwTitle": "Bouw — magazyny", "bouwText": "Działamy na budowach i magazynach. Posiadamy dyplom VCA oraz dyplom kursu spawalniczego.", "certTitle": "Certyfikaty", "certs": ["Dyplom VCA", "Dyplom kursu spawalniczego"], "mapTitle": "Lokalizacja", "mapLink": "Otwórz w Google Maps", "privacy": "Polityka prywatności"}, "nl": {"kicker": "Glastuinbouw · Bouw · Delft", "intro": "Werk in kassen en op bouwplaatsen in Nederland.", "contact": "Contact", "address": "Adres", "greenTitle": "Glastuinbouw", "greenText": "Specialisatie in het onderhoud van moderne kassen voor de agrarische sector. Professionele horticulturele oplossingen.", "bouwTitle": "Bouw — magazijnen", "bouwText": "Wij werken op bouwplaatsen en in magazijnen. Wij beschikken over een VCA-diploma en een lasdiploma.", "certTitle": "Certificaten", "certs": ["VCA-diploma", "Lasdiploma"], "mapTitle": "Locatie", "mapLink": "Open in Google Maps", "privacy": "Privacybeleid"}, "en": {"kicker": "Greenhouse horticulture · Construction · Delft", "intro": "Greenhouse and construction work in the Netherlands.", "contact": "Contact", "address": "Address", "greenTitle": "Greenhouse horticulture", "greenText": "Specialized in the maintenance of modern greenhouses for the agricultural sector. Professional horticultural solutions.", "bouwTitle": "Construction — warehouses", "bouwText": "We work on construction sites and in warehouses. We hold a VCA diploma and a welding course diploma.", "certTitle": "Certificates", "certs": ["VCA diploma", "Welding course diploma"], "mapTitle": "Location", "mapLink": "Open in Google Maps", "privacy": "Privacy policy"}};
-async function b64(url){ const t = await fetch(url).then(r=>r.text()); return "data:image/jpeg;base64,"+t.trim(); }
 let lang = localStorage.getItem("lang") || "pl";
-let shots = null;
-async function pics(){
-  if (shots) return shots;
-  const [logo, green, ware] = await Promise.all([
-    b64("images/logo.b64"), b64("images/greenhouse.b64"), b64("images/warehouse.b64")
-  ]);
-  shots = {logo, green, ware};
-  return shots;
-}
-async function render() {
+function render() {
   const t = copy[lang];
-  const img = await pics();
   localStorage.setItem("lang", lang);
   document.documentElement.lang = lang;
   document.getElementById("langs").innerHTML = ["pl","nl","en"].map(c =>
     `<button type="button" data-l="${c}" aria-pressed="${c===lang}">${c.toUpperCase()}</button>`).join("");
   document.querySelectorAll("#langs button").forEach(b => b.onclick = () => { lang = b.dataset.l; render(); });
-  document.getElementById("logo").src = img.logo;
+  document.getElementById("logo").src = "images/logo.jpg";
   document.getElementById("kicker").textContent = t.kicker;
   document.getElementById("intro").textContent = t.intro;
   document.getElementById("contact").innerHTML = `<h2 style="grid-column:1/-1">${t.contact}</h2>
@@ -101,8 +90,8 @@ async function render() {
     <p style="grid-column:1/-1"><span class="meta">${t.address}</span><br>Lodewijk van Deysselhof 38, 2624 WE Delft</p>
     <p class="meta" style="grid-column:1/-1">KvK 76834123 · BTW NL005236943B80</p>`;
   document.getElementById("sectors").innerHTML = `
-    <article><img class="shot" alt="${t.greenTitle}" src="${img.green}"><div><h2>${t.greenTitle}</h2><p>${t.greenText}</p></div></article>
-    <article><img class="shot" alt="${t.bouwTitle}" src="${img.ware}"><div><h2>${t.bouwTitle}</h2><p>${t.bouwText}</p></div></article>`;
+    <article><img class="shot" alt="${t.greenTitle}" src="images/greenhouse.jpg"><div><h2>${t.greenTitle}</h2><p>${t.greenText}</p></div></article>
+    <article><img class="shot" alt="${t.bouwTitle}" src="images/warehouse.jpg"><div><h2>${t.bouwTitle}</h2><p>${t.bouwText}</p></div></article>`;
   document.getElementById("certs").innerHTML = `<h2>${t.certTitle}</h2><ul>${t.certs.map(c=>`<li>✓ ${c}</li>`).join("")}</ul>`;
   document.getElementById("mapTitle").textContent = t.mapTitle;
   document.getElementById("mapLink").textContent = t.mapLink;
