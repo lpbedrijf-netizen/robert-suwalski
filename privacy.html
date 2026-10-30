@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Robert Suwalski</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=Outfit:wght@400;500;600&display=swap">
+<style>
+:root { --paper:#f3efe6; --ink:#1a241c; --muted:#5d675f; --leaf:#1e5c34; --deep:#143f24; --card:#fffcf7; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Outfit,system-ui,sans-serif; }
+header { background:var(--deep); color:var(--card); }
+.bar, main { width:min(46rem,100%); margin:0 auto; }
+.bar { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; }
+a.brand { color:inherit; text-decoration:none; font-family:Fraunces,Georgia,serif; }
+.langs { display:flex; gap:.25rem; background:var(--leaf); border-radius:999px; padding:.25rem; }
+.langs button { min-width:2.75rem; min-height:2.75rem; border:0; border-radius:999px; background:transparent; color:var(--card); font:inherit; font-weight:600; cursor:pointer; }
+.langs button[aria-pressed="true"] { background:var(--card); color:var(--deep); }
+main { padding:2.5rem 1.25rem 4rem; }
+h1,h2 { font-family:Fraunces,Georgia,serif; font-weight:560; }
+h1 { font-size:2.4rem; margin:.25rem 0 0; }
+.muted { color:var(--muted); line-height:1.6; }
+section { margin-top:2rem; }
+.back { color:var(--leaf); display:inline-flex; min-height:2.75rem; align-items:center; margin-top:2rem; }
+</style>
+</head>
+<body>
+<header><div class="bar"><a class="brand" href="index.html">Robert Suwalski</a><div class="langs" id="langs"></div></div></header>
+<main>
+<p class="muted" id="updated"></p>
+<h1 id="title"></h1>
+<div id="sections"></div>
+<a class="back" id="back" href="index.html"></a>
+</main>
+<script>
+const pages = {"pl": {"title": "Polityka prywatności", "updated": "30 października 2026", "back": "Wróć na stronę", "sections": [{"h": "Kto odpowiada za dane", "p": "Administratorem danych jest Robert Suwalski, Lodewijk van Deysselhof 38, 2624 WE Delft, Holandia. KvK 76834123, BTW NL005236943B80. Kontakt: robert.suwalski@outlook.com, tel. 0684600950."}, {"h": "Jakie dane są przetwarzane", "p": "Ta strona nie ma kont, formularza ani własnych ciasteczek. Dane powstają tylko wtedy, gdy sam pan lub pani napisze, zadzwoni albo odwiedzi stronę. Mogą to być imię, numer telefonu, adres e-mail, treść wiadomości oraz techniczne dane połączenia, takie jak adres IP, które zapisuje dostawca hostingu."}, {"h": "Po co", "p": "Dane z telefonu i e-maila są używane wyłącznie do odpowiedzi i do wykonania uzgodnionej pracy. Podstawą jest art. 6 ust. 1 lit. b RODO, gdy chodzi o zlecenie, albo lit. f, gdy chodzi o zwykły kontakt. Strona nie służy do wysyłki newslettera ani do sprzedaży danych."}, {"h": "Mapa i czcionki", "p": "Na stronie jest mapa Google oraz czcionki pobierane z Google. Przy otwarciu strony przeglądarka łączy się z Google. Google może wtedy otrzymać adres IP i dane o urządzeniu."}, {"h": "Jak długo", "p": "Korespondencja jest przechowywana tak długo, jak trzeba, żeby odpowiedzieć, rozliczyć zlecenie albo spełnić obowiązek podatkowy. Potem jest usuwana albo anonimizowana."}, {"h": "Komu dane są przekazywane", "p": "Dane nie są sprzedawane. Mogą je zobaczyć tylko osoby potrzebne do działania strony i poczty oraz, gdy wymaga tego prawo, urząd. Google otrzymuje dane techniczne przy wczytaniu mapy i czcionek."}, {"h": "Prawa", "p": "Można poprosić o wgląd, poprawienie, usunięcie albo ograniczenie danych oraz wnieść sprzeciw. Wniosek można wysłać na robert.suwalski@outlook.com. Skargę można złożyć do holenderskiego organu Autoriteit Persoonsgegevens."}]}, "nl": {"title": "Privacybeleid", "updated": "30 oktober 2026", "back": "Terug naar de site", "sections": [{"h": "Wie is verantwoordelijk", "p": "De verwerkingsverantwoordelijke is Robert Suwalski, Lodewijk van Deysselhof 38, 2624 WE Delft. KvK 76834123, btw NL005236943B80. Contact: robert.suwalski@outlook.com, tel. 0684600950."}, {"h": "Welke gegevens", "p": "Deze site heeft geen accounts, geen formulier en geen eigen cookies. Gegevens ontstaan alleen als u zelf belt, mailt of de site bezoekt. Dat kunnen uw naam, telefoonnummer, e-mailadres en de inhoud van uw bericht zijn. De hostingpartij kan technische gegevens vastleggen, zoals een IP-adres."}, {"h": "Waarvoor", "p": "Telefoon- en e-mailgegevens worden alleen gebruikt om te antwoorden en om afgesproken werk uit te voeren. De grondslag is artikel 6 lid 1 onder b AVG als het om een opdracht gaat, of onder f bij gewoon contact. Er is geen nieuwsbrief en gegevens worden niet verkocht."}, {"h": "Kaart en lettertypen", "p": "Op de site staat een Google-kaart en de lettertypen komen van Google. Uw browser maakt daarbij verbinding met Google. Google kan dan uw IP-adres en apparaatgegevens ontvangen."}, {"h": "Bewaartermijn", "p": "Correspondentie wordt bewaard zolang dat nodig is om te antwoorden, een opdracht af te ronden of aan een fiscale plicht te voldoen. Daarna wordt zij gewist of geanonimiseerd."}, {"h": "Met wie", "p": "Gegevens worden niet verkocht. Alleen partijen die nodig zijn voor de site en de e-mail kunnen ze zien, en een instantie als de wet dat vraagt. Google ontvangt technische gegevens bij het laden van de kaart en de lettertypen."}, {"h": "Uw rechten", "p": "U kunt vragen om inzage, verbetering, verwijdering of beperking, en bezwaar maken. Stuur uw verzoek naar robert.suwalski@outlook.com. Een klacht kan bij de Autoriteit Persoonsgegevens."}]}, "en": {"title": "Privacy policy", "updated": "30 October 2026", "back": "Back to the site", "sections": [{"h": "Who is responsible", "p": "The controller is Robert Suwalski, Lodewijk van Deysselhof 38, 2624 WE Delft, the Netherlands. KvK 76834123, VAT NL005236943B80. Contact: robert.suwalski@outlook.com, phone 0684600950."}, {"h": "What data is used", "p": "This site has no accounts, no form and no cookies of its own. Data is created only if you call, email or visit the page. That can include your name, phone number, email address and the content of your message. The host may store technical data such as an IP address."}, {"h": "Why", "p": "Phone and email details are used only to reply and to carry out agreed work. The basis is article 6(1)(b) GDPR where there is a job, or 6(1)(f) for ordinary contact. There is no newsletter and data is not sold."}, {"h": "Map and fonts", "p": "The page includes a Google map and loads fonts from Google. Your browser then connects to Google, which may receive your IP address and device data."}, {"h": "How long", "p": "Correspondence is kept only as long as needed to reply, finish a job or meet a tax duty. It is then deleted or anonymised."}, {"h": "Who receives it", "p": "Data is not sold. Only parties needed to run the site and email can see it, and an authority where the law requires that. Google receives technical data when the map and fonts load."}, {"h": "Your rights", "p": "You can ask for access, correction, deletion or restriction, and you can object. Send a request to robert.suwalski@outlook.com. You can also complain to the Dutch Autoriteit Persoonsgegevens."}]}};
+const q = new URLSearchParams(location.search).get("lang");
+let lang = q || localStorage.getItem("lang") || "pl";
+function render() {
+  if (!pages[lang]) lang = "pl";
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  const t = pages[lang];
+  document.title = t.title + " — Robert Suwalski";
+  document.getElementById("langs").innerHTML = ["pl","nl","en"].map(c =>
+    `<button type="button" data-l="${c}" aria-pressed="${c===lang}">${c.toUpperCase()}</button>`).join("");
+  document.querySelectorAll("#langs button").forEach(b => b.onclick = () => { lang = b.dataset.l; history.replaceState(null,"","?lang="+lang); render(); });
+  document.getElementById("updated").textContent = t.updated;
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("sections").innerHTML = t.sections.map(s => `<section><h2>${s.h}</h2><p class="muted">${s.p}</p></section>`).join("");
+  const back = document.getElementById("back");
+  back.textContent = t.back;
+}
+render();
+</script>
+</body></html>
